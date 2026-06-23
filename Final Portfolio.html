@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokala Sai Suhitha — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#171527;
+    --bg-raised:#201D38;
+    --ink:#F3F1F9;
+    --ink-soft:#A8A2C2;
+    --line:#332E52;
+    --card:#201D38;
+    --indigo:#9B8CFF;
+    --indigo-soft:#2A2548;
+    --teal:#5FCDB0;
+    --teal-soft:#1C302E;
+    --max:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 1200px 700px at 50% -5%, #2C2350 0%, var(--bg) 55%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.98rem;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  :focus-visible{outline:2px solid var(--indigo);outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(23,21,39,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .nav-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:#FFFFFF;}
+  .nav-links{display:flex;gap:26px;}
+  .nav-links a{
+    font-size:0.86rem;color:#FFFFFF;
+    opacity:0.75;
+    transition:color .2s ease, opacity .2s ease;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;left:0;bottom:0;
+    width:0%;height:2px;
+    background:var(--teal);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover{opacity:1;}
+  .nav-links a.active{opacity:1;color:var(--teal);}
+  .nav-links a.active::after{width:100%;}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:#FFFFFF;margin:5px 0;}
+
+  @media (max-width:780px){
+    .nav-links{
+      position:absolute;top:64px;left:0;right:0;
+      background:var(--bg);
+      flex-direction:column;gap:0;
+      border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    .nav-links.open{max-height:400px;}
+    .nav-links a{padding:14px 28px;border-top:1px solid var(--line);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:80px 0 56px;}
+  header.hero .wrap{max-width:680px;}
+  .hero-welcome{
+    color:var(--teal);
+    margin-bottom:14px;
+    font-size:0.95rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    min-height:1.2em;
+  }
+  .hero-greeting{
+    font-size:1.1rem;color:var(--ink-soft);margin-bottom:6px;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    line-height:1.08;
+  }
+  .hero h1 .accent{color:var(--indigo);}
+  .hero-role{
+    margin-top:18px;
+    font-size:1.02rem;
+    color:var(--ink-soft);
+  }
+  .hero-role .sep{color:var(--line);margin:0 10px;}
+  .caret{
+    color:var(--teal);font-weight:400;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{
+    0%,50%{opacity:1;}
+    50.01%,100%{opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .caret{animation:none;opacity:1;}
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:2.04rem;
+    color:var(--ink-soft);
+    max-width:560px;
+  }
+  .hero-row{
+    margin-top:36px;
+    display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:7px;
+    font-size:0.92rem;font-weight:600;
+    border:1px solid transparent;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--indigo);color:#0E1116;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--ink-soft);}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:56px 0;position:relative;}
+  .section-head{
+    margin-bottom:36px;
+  }
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:10px;}
+  .section-head .rule{
+    width:42px;height:4px;border-radius:2px;
+    background:var(--indigo);
+  }
+  .section-divider{display:none;}
+
+  /* ---------- ABOUT / SKILLS ---------- */
+  .about-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:64px;
+  }
+  .about-grid p{color:var(--ink-soft);margin:0 0 16px;}
+  .about-grid p:last-child{margin-bottom:0;}
+  @media (max-width:780px){
+    .about-grid{grid-template-columns:1fr;gap:36px;}
+  }
+
+  .about-text{
+    max-width:680px;
+  }
+  .about-text p{color:var(--ink-soft);margin:0 0 16px;}
+  .about-text p:last-child{margin-bottom:0;}
+
+  .about-text-photo{
+    display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start;
+  }
+  @media (max-width:780px){
+    .about-text-photo{grid-template-columns:1fr;gap:28px;}
+    .about-text-photo{display:flex;flex-direction:column-reverse;}
+  }
+  .about-text-photo .about-text{max-width:none;}
+  .about-photo{
+    aspect-ratio:1;border-radius:50%;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    position:sticky;top:90px;
+  }
+  @media (max-width:780px){
+    .about-photo{position:static;max-width:240px;margin:0 auto;}
+  }
+  .about-photo img{width:100%;height:100%;object-fit:cover;}
+  .about-photo .ph-content{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:var(--ink-soft);
+  }
+  .about-photo .ph-content svg{width:48px;height:48px;opacity:0.45;}
+  .about-photo .ph-content span{
+    font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+    text-align:center;max-width:140px;line-height:1.5;
+  }
+
+  /* ---------- SKILLS (card grid) ---------- */
+  .skills-card-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  }
+  @media (max-width:920px){
+    .skills-card-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:600px){
+    .skills-card-grid{grid-template-columns:1fr;}
+  }
+  .skill-card{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 20px;
+    transition:border-color .2s ease, transform .18s ease;
+  }
+  .skill-card:hover{border-color:var(--indigo);transform:translateY(-3px);}
+  .skill-card h3{
+    font-family:'Inter',sans-serif;
+    font-size:1.22rem;font-weight:700;
+    color:var(--indigo);
+    margin-bottom:16px;
+  }
+  .skill-card .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .skill-card .chip{
+    padding:7px 14px;border-radius:6px;
+    background:transparent;
+    border:1px solid var(--line);
+    font-size:0.85rem;color:var(--ink-soft);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .filter-row{
+    display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;
+  }
+  .filter-btn{
+    padding:11px 24px;border-radius:30px;
+    font-size:0.92rem;font-weight:600;
+    border:1px solid var(--line);
+    background:transparent;color:var(--ink-soft);
+    cursor:pointer;transition:all .2s ease;
+  }
+  .filter-btn.active{
+    background:var(--indigo);color:#0E1116;border-color:var(--indigo);
+  }
+  .filter-btn:not(.active):hover{border-color:var(--ink-soft);color:var(--ink);}
+
+  .track-section{display:none;}
+  .track-section.visible{display:block;}
+
+  .project-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  @media (max-width:920px){
+    .project-grid{grid-template-columns:1fr;}
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(0,0,0,0.6);}
+  .card-media{
+    aspect-ratio:16/10;
+    background:var(--bg-raised);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;position:relative;
+  }
+  .card-media img{width:100%;height:100%;object-fit:cover;}
+  .card-media .ph-icon{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:var(--ink-soft);
+  }
+  .card-media .ph-icon svg{width:34px;height:34px;opacity:0.5;}
+  .card-media .ph-icon span{font-family:'JetBrains Mono',monospace;font-size:0.72rem;}
+  .card-body{padding:24px;display:flex;flex-direction:column;flex-grow:1;}
+  .card .ph-badge{
+    align-self:flex-start;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.66rem;
+    color:var(--teal);
+    background:var(--teal-soft);
+    padding:3px 9px;border-radius:4px;
+    margin-bottom:12px;
+  }
+  .card h4{
+    font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;
+    margin-bottom:10px;
+  }
+  .card p{
+    color:var(--ink-soft);font-size:0.88rem;
+    margin:0 0 18px;flex-grow:1;
+  }
+  .card .stack{
+    display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;
+  }
+  .card .stack span{
+    font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+    color:var(--ink-soft);
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:3px 8px;border-radius:4px;
+  }
+  .card .links{display:flex;justify-content:space-between;margin-top:auto;}
+  .card .links a{
+    font-size:0.84rem;font-weight:600;
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--ink);
+    border-bottom:1px solid var(--indigo);
+    padding-bottom:2px;
+  }
+  .card .links a.disabled{
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--indigo);
+    cursor:pointer;
+  }
+  .card .links svg{width:14px;height:14px;}
+
+  /* ---------- EDUCATION ---------- */
+  .ed-item{
+    padding:22px 0;border-top:1px solid var(--line);
+  }
+  .ed-item:first-child{border-top:none;padding-top:0;}
+  .ed-item .row1{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;
+  }
+  .ed-item h4{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;}
+  .ed-item .yrs{font-family:'JetBrains Mono',monospace;font-size:1.0rem;color:var(--ink-soft);white-space:nowrap;}
+  .ed-item .deg{color:var(--ink-soft);font-size:1.0rem;margin-top:4px;}
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  @media (max-width:920px){
+    .cert-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .cert-grid{grid-template-columns:1fr;}
+  }
+  .cert-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .cert-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 34px -20px rgba(0,0,0,0.6);
+    border-color:var(--indigo);
+  }
+  .cert-card:hover .cert-media{filter:brightness(1.15);}
+  .cert-card:focus-visible{outline:2px solid var(--indigo);outline-offset:3px;}
+  .cert-media{
+    aspect-ratio:4/3;
+    background:var(--bg-raised);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .cert-media img{width:100%;height:100%;object-fit:cover;transition:filter .18s ease;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(10,13,18,0.92);
+    display:none;align-items:center;justify-content:center;
+    padding:32px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-content{
+    max-width:min(680px,90vw);
+    max-height:85vh;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .lightbox-img-wrap{
+    background:var(--bg-raised);
+    display:flex;align-items:center;justify-content:center;
+    aspect-ratio:4/3;
+    overflow:hidden;
+  }
+  .lightbox-img-wrap img{width:100%;height:100%;object-fit:contain;}
+  .lightbox-img-wrap .ph-content{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:var(--ink-soft);
+  }
+  .lightbox-img-wrap .ph-content svg{width:48px;height:48px;opacity:0.45;}
+  .lightbox-img-wrap .ph-content span{
+    font-family:'JetBrains Mono',monospace;font-size:0.75rem;
+  }
+  .lightbox-caption{padding:16px 20px;}
+  .lightbox-caption h4{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:600;margin-bottom:4px;}
+  .lightbox-caption .issuer{color:var(--ink-soft);font-size:0.95rem;}
+  .lightbox-close{
+    position:absolute;top:18px;right:18px;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--card);border:1px solid var(--line);
+    color:var(--ink);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease;
+  }
+  .lightbox-close:hover{border-color:var(--indigo);}
+  .lightbox-close svg{width:18px;height:18px;}
+  .cert-media .ph-icon{
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:var(--ink-soft);
+  }
+  .cert-media .ph-icon svg{width:30px;height:30px;opacity:0.5;}
+  .cert-media .ph-icon span{font-family:'JetBrains Mono',monospace;font-size:0.7rem;}
+  .cert-body{padding:18px 20px;}
+  .cert-body h4{
+    font-family:'Fraunces',serif;font-size:0.98rem;font-weight:600;
+    margin-bottom:6px;
+  }
+  .cert-body .issuer{color:var(--ink-soft);font-size:0.82rem;}
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{
+    padding:64px 0 0;
+    margin-top:40px;
+    background:var(--bg-raised);
+    border-top:1px solid var(--line);
+  }
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:64px;
+  }
+  @media (max-width:780px){
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+  }
+  .contact-intro h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:16px;}
+  .contact-intro p{color:var(--ink-soft);max-width:420px;margin-bottom:28px;}
+  .contact-detail{
+    display:flex;align-items:center;gap:10px;
+    font-size:0.94rem;color:var(--ink-soft);margin-bottom:10px;
+  }
+  .contact-detail a{color:var(--ink-soft);transition:color .2s ease;}
+  .contact-detail a:hover{color:var(--indigo);}
+  .contact-detail svg{width:16px;height:16px;flex-shrink:0;color:var(--indigo);}
+  .social-row{display:flex;gap:14px;margin-top:24px;flex-wrap:wrap;}
+  .social-row a{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);transition:all .2s ease;
+  }
+  .social-row a:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-2px);}
+  .social-row svg{width:16px;height:16px;}
+
+  .contact-form{display:flex;flex-direction:column;gap:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:560px){
+    .form-row{grid-template-columns:1fr;}
+  }
+  .contact-form input,
+  .contact-form textarea{
+    width:100%;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:13px 16px;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:0.92rem;
+    transition:border-color .2s ease;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder{color:var(--ink-soft);}
+  .contact-form input:focus,
+  .contact-form textarea:focus{outline:none;border-color:var(--indigo);}
+  .contact-form textarea{resize:vertical;min-height:120px;}
+  .contact-form button{
+    align-self:flex-start;
+    margin-top:4px;
+  }
+  .copyline{
+    margin-top:48px;padding:24px 0 32px;border-top:1px solid var(--line);
+    display:flex;justify-content:center;flex-wrap:wrap;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="nav-name">Pokala Sai Suhitha</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-welcome mono"><span id="typewriter"></span><span class="caret">|</span></div>
+    <div class="hero-greeting">Hello, I am</div>
+    <h1>Pokala Sai Suhitha <span class="accent">👋</span></h1>
+    <div class="hero-role">B.Tech CSE Student<span class="sep">|</span>Aspiring Software Developer &amp; Data Analyst</div>
+    <div class="hero-row">
+      <a class="btn btn-primary" href="Sai Suhitha Resume2.pdf" download>Download Resume</a>
+      <a class="btn btn-ghost" href="mailto:pokalasuhitha@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About me</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="about-text-photo">
+      <div class="about-text">
+        <p>I am Pokala Sai Suhitha, a final-year Computer Science Engineering student at Mohan Babu University with a CGPA of 9.52 and a strong interest in Software Development and Data Analytics.
+
+Over the years, I have built a solid foundation in Java, SQL, Data Structures & Algorithms, and full-stack web development using the MERN stack. I enjoy solving problems, learning new technologies, and applying my skills through hands-on projects.
+
+</p><p>To strengthen my problem-solving abilities, I actively practice coding on LeetCode and have solved 300+ problems across DSA and SQL. Alongside development, I am also interested in data analytics and enjoy working with data to uncover insights and support better decision-making.
+
+I enjoy taking ideas from concept to implementation and continuously improving my skills through real-world projects and hands-on learning.</p>
+      </div>
+      <div class="about-photo">
+        <!-- Replace this placeholder with: <img src="your-photo-2.jpg" alt="Pokala Sai Suhitha"> -->
+        
+          
+          <span><img src="suhitha.jpg" alt="Pokala Sai Suhitha"></span>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="skills-card-grid">
+      <div class="skill-card">
+        <h3>Programming</h3>
+        <div class="chips">
+          <span class="chip">Java</span>
+          <span class="chip">Python</span>
+          <span class="chip">Data Structures and Algorithms</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Frontend</h3>
+        <div class="chips">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Backend &amp; Databases</h3>
+        <div class="chips">
+          <span class="chip">Node.js</span>
+          <span class="chip">Express.js</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Data Analysis</h3>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Pandas</span>
+          <span class="chip">NumPy</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Education</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="ed-item">
+      <div class="row1">
+        <h4>Mohan Babu University</h4>
+        <span class="yrs">2023 — 2027</span>
+      </div>
+      <div class="deg">B.Tech in Computer Science Engineering &middot; CGPA 9.52</div>
+    </div>
+    <div class="ed-item">
+      <div class="row1">
+        <h4>Narayana Junior College</h4>
+        <span class="yrs">2021 — 2023</span>
+      </div>
+      <div class="deg">Intermediate (MPC) &middot; 96.9%</div>
+    </div>
+    <div class="ed-item">
+      <div class="row1">
+        <h4>Good Shepherd E.M School</h4>
+        <span class="yrs">2021</span>
+      </div>
+      <div class="deg">SSC - 86.3%</div>
+    </div>
+  </div>
+</section>
+
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" data-track="web">Web Development</button>
+      <button class="filter-btn" data-track="data">Data Analytics</button>
+    </div>
+
+    <div class="track-section visible" id="track-web">
+      <div class="project-grid">
+
+        <div class="card">
+          <div class="card-media">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.5" fill="currentColor"/></svg>
+              
+              <span><img src="nebula_tasks.png"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>TaskSphere</h4>
+            <p>A full-stack task management application that helps users organize and track daily tasks, with secure login and real-time CRUD operations.</p>
+            <div class="stack">
+              <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span><span>JWT</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/psaisuhitha/tasksphere" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code
+              </a>
+              <a href="https://tasksphere-neon.vercel.app" title="Add your live demo link">Live Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.5" fill="currentColor"/></svg>
+              <span><img src="sms_project.png"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Student Management System</h4>
+            <p>A web application for managing student records, allowing users to add, edit, search, and delete student information efficiently.</p>
+            <div class="stack">
+              <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/psaisuhitha/student-management-system" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code
+              </a>
+              <a   href="https://student-management-system-psi-roan.vercel.app/" title="Add your live demo link">Live Demo</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-media">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r="0.5" fill="currentColor"/></svg>
+              <span><img src="notes.png"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Notes Management Application</h4>
+            <p>A responsive note-taking application that allows users to create, edit, and organize notes with a clean and intuitive interface.</p>
+            <div class="stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/psaisuhitha/Interactive-Notes-Web-Application" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code
+              </a>
+              <a class="disabled"  href="" title="Add your live demo link">Live Demo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="track-section" id="track-data">
+      <div class="project-grid">
+
+        <div class="card">
+          <div class="card-media">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="13" width="4" height="7"/><rect x="10" y="9" width="4" height="11"/><rect x="17" y="4" width="4" height="16"/></svg>
+              <span><img src="bank_loan_project.png"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Bank Loan Risk Analysis Dashboard</h4>
+            <p>Analyzed 255K+ loan records using Python (Pandas, NumPy) and SQL to identify default risk factors, then built a Power BI dashboard to visualize trends and risk segments.</p>
+            <div class="stack">
+              <span>Python</span><span>Pandas</span><span>SQL</span><span>Power BI</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/psaisuhitha/bank-loan-risk-analysis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-media">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="13" width="4" height="7"/><rect x="10" y="9" width="4" height="11"/><rect x="17" y="4" width="4" height="16"/></svg>
+              <span><img src="hospital_dashboard.png"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Hospital Readmission Risk Analysis</h4>
+            <p>Predictive analytics dashboard to identify 30-day hospital readmission risk using Python, SQL, and Power BI.</p>
+            <div class="stack">
+              <span>Python</span><span>SQL</span><span>Power BI</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/psaisuhitha/Hospital-Readmission-Risk-Analysis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card">
+          <div class="card-media">
+            <div class="ph-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="13" width="4" height="7"/><rect x="10" y="9" width="4" height="11"/><rect x="17" y="4" width="4" height="16"/></svg>
+              <span><img src="engineering_dashboard.png"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4>Engineering Student Placement Analysis</h4>
+            <p>Analyzed a placement dataset using Python and SQL to identify the factors affecting student placements, with a Power BI dashboard to visualize trends and recruitment patterns.</p>
+            <div class="stack">
+              <span>Python</span><span>SQL</span><span>Power BI</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/psaisuhitha/engineering-student-placement-analysis" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+                Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="certificates">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Certifications &amp; achievements</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="cert-grid">
+
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: NPTEL DBMS Elite Certificate" data-img="nptel certificate.png" data-title="NPTEL DBMS Certificate"  >
+        <div class="cert-media">
+          
+            <span><img src="nptel certificate.png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>NPTEL DBMS Elite Certificate</h4>
+          <div class="issuer">NPTEL</div>
+        </div>
+      </div>
+
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: Java Programming Certificate" data-img="java certificate.png" data-title="Java Certificate" data-issuer="Infosys SpringBoard">
+        <div class="cert-media">
+           <span><img src="java certificate.png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>Java Programming Certificate</h4>
+          <div class="issuer">Infosys SpringBoard</div>
+        </div>
+      </div>
+
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: Intermediate SQL Certificate" data-img="sql intermediate certificate.png" data-title="SQL Certificate" data-issuer="HackerRank">
+        <div class="cert-media">
+           <span><img src="sql intermediate certificate.png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>Intermediate SQL Certificate</h4>
+          <div class="issuer">HackerRank</div>
+        </div>
+      </div>
+
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: Data Analysis Certificate" data-img="data analytics.png" data-title="Data Analytics Certificate" data-issuer="Coursera">
+        <div class="cert-media">
+           <span><img src="data analytics.png"></span>
+         
+        </div>
+        <div class="cert-body">
+          <h4>Data Analytics Certificate</h4>
+          <div class="issuer">Coursera(IBM)</div>
+        </div>
+      </div>
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: Data Analysis Certificate" data-img="maincrafts certficate.png"  data-issuer="MainCrafts">
+        <div class="cert-media">
+          <span><img src="maincrafts certficate.png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>MainCrafts Data Analytics Internship Certificate</h4>
+          <div class="issuer">MainCrafts</div>
+        </div>
+      </div>
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: Data Analysis Certificate" data-img="deloitte simulation certificate.png" data-title="Data Analytics Deloitte Micro Internship Certificate" data-issuer="Forage">
+        <div class="cert-media">
+          <span><img src="deloitte simulation certificate.png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>Deloitte Job Simulation Certificate</h4>
+          <div class="issuer">Forage</div>
+        </div>
+      </div>
+      <!--
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: X-Horizon 24-Hour Hackathon" data-img="" data-title="X-Horizon 24-Hour Hackathon" data-issuer="Participation Certificate">
+        <div class="cert-media">
+          <span><img ></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>X-Horizon 24-Hour Hackathon</h4>
+          <div class="issuer">Participation Certificate</div>
+        </div>
+      </div> -->
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate:Python Certificate" data-img="python courseera certificate .png" data-title="Python Certificate" data-issuer="Courseera">
+        <div class="cert-media">
+          <span><img src="python courseera certificate .png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>Python Certificate</h4>
+          <div class="issuer">Coursera</div>
+        </div>
+        </div>
+
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: LeetCode 50 Days and SQL 50 Badges" data-img="leetcode 50day badge.png"  data-issuer="LeetCode">
+        <div class="cert-media">
+          <span><img src="leetcode 50day badge.png"></span>
+          
+        </div>
+        <div class="cert-body">
+          <h4>LeetCode 50 Days Badge</h4>
+          <div class="issuer">LeetCode</div>
+        </div>
+      </div>
+      <div class="cert-card" tabindex="0" role="button" aria-label="Open certificate: LeetCode 50 Days and SQL 50 Badges" data-img="sql 50day badge pic.png"  data-issuer="LeetCode">
+        <div class="cert-media">
+         <span><img src="sql 50day badge pic.png"></span>
+         
+        </div>
+        <div class="cert-body">
+          <h4>LeetCode SQL 50 Badge</h4>
+          <div class="issuer">LeetCode</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Contact me</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p>I'm looking for job or internship opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you.</p>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <a href="mailto:pokalasuhitha@gmail.com">pokalasuhitha@gmail.com</a>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:8688228455">+91 86882 28455</a>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Nandyal, Andhra Pradesh, India</span>
+        </div>
+        <div class="social-row">
+          <a href="https://github.com/psaisuhitha" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.7 10.8.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.5.1-3.1 0 0 .9-.3 3 1.1.9-.2 1.8-.3 2.7-.3.9 0 1.8.1 2.7.3 2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.7 1.1.7 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.8 7.7-10.8C23.5 5.7 18.3.5 12 .5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/pokala-sai-suhitha-88417a321/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.3c-1 0-1.7-.7-1.7-1.6s.7-1.6 1.7-1.6 1.7.7 1.7 1.6-.7 1.6-1.7 1.6zm13.5 10.3h-3v-4.7c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v4.8h-3v-9h2.9v1.3c.4-.7 1.4-1.5 2.9-1.5 3.1 0 3.9 2 3.9 4.7v4.5z"/></svg>
+          </a>
+          <a href="https://leetcode.com/u/PokalaSaiSuhitha/" target="_blank" rel="noopener" aria-label="LeetCode">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 0a1.4 1.4 0 0 0-1 .4L4.3 8.4a3.2 3.2 0 0 0-.9 2.2c0 .8.3 1.6.9 2.2l8.2 8a1.4 1.4 0 0 0 2-2l-7.4-7.2 7.4-7.2a1.4 1.4 0 0 0-1-2.4zm6.9 14.8a1.4 1.4 0 0 0-1 .4l-2 2a1.4 1.4 0 0 0 2 2l2-2a1.4 1.4 0 0 0-1-2.4zM9.5 11.4a1.4 1.4 0 0 0 0 2.8h9.6a1.4 1.4 0 0 0 0-2.8z"/></svg>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <input type="text" id="cf-name" placeholder="Name" required>
+          <input type="email" id="cf-email" placeholder="Email" required>
+        </div>
+        <input type="text" id="cf-subject" placeholder="Subject">
+        <textarea id="cf-message" placeholder="Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send a message</button>
+      </form>
+    </div>
+    <div class="copyline">
+      <span>&copy; 2026 Pokala Sai Suhitha. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="certLightbox">
+  <div class="lightbox-content">
+    <div class="lightbox-img-wrap" id="lightboxImgWrap">
+      <div class="ph-content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M14 9h5M14 13h5"/></svg>
+        <span>Certificate image not added yet</span>
+      </div>
+    </div>
+    <div class="lightbox-caption">
+      <h4 id="lightboxTitle"></h4>
+      <div class="issuer" id="lightboxIssuer"></div>
+    </div>
+  </div>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  const navAnchors = links.querySelectorAll('a');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  navAnchors.forEach(a => {
+    a.addEventListener('click', () => {
+      navAnchors.forEach(link => link.classList.remove('active'));
+      a.classList.add('active');
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const navSections = Array.from(navAnchors).map(a => document.querySelector(a.getAttribute('href')));
+  function highlightOnScroll(){
+    let currentIndex = 0;
+    const scrollPos = window.scrollY + 120;
+    navSections.forEach((sec, i) => {
+      if(sec && sec.offsetTop <= scrollPos) currentIndex = i;
+    });
+    navAnchors.forEach(link => link.classList.remove('active'));
+    if(navAnchors[currentIndex]) navAnchors[currentIndex].classList.add('active');
+  }
+  window.addEventListener('scroll', highlightOnScroll, {passive:true});
+  highlightOnScroll();
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.track-section').forEach(s => s.classList.remove('visible'));
+      document.getElementById('track-' + btn.dataset.track).classList.add('visible');
+    });
+  });
+
+  // ---------- CERTIFICATE LIGHTBOX ----------
+  const lightbox = document.getElementById('certLightbox');
+  const lightboxImgWrap = document.getElementById('lightboxImgWrap');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxIssuer = document.getElementById('lightboxIssuer');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(card){
+    const img = card.dataset.img;
+    const title = card.dataset.title || '';
+    const issuer = card.dataset.issuer || '';
+    if(img){
+      lightboxImgWrap.innerHTML = `<img src="${img}" alt="${title}">`;
+    } else {
+      lightboxImgWrap.innerHTML = `
+        <div class="ph-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M14 9h5M14 13h5"/></svg>
+          <span>Certificate image not added yet</span>
+        </div>`;
+    }
+    lightboxTitle.textContent = title;
+    lightboxIssuer.textContent = issuer;
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+  }
+
+  document.querySelectorAll('.cert-card').forEach(card => {
+    card.addEventListener('click', () => openLightbox(card));
+    card.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openLightbox(card);
+      }
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+  // ---------- CONTACT FORM (mailto fallback) ----------
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cf-name').value;
+      const email = document.getElementById('cf-email').value;
+      const subject = document.getElementById('cf-subject').value || 'Portfolio contact';
+      const message = document.getElementById('cf-message').value;
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      window.location.href = `mailto:pokalasuhitha@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+  // ---------- TYPEWRITER (Welcome to my portfolio) ----------
+  const typewriterEl = document.getElementById('typewriter');
+  const welcomeText = 'Welcome to my portfolio';
+  let twCharIndex = 0;
+  let twDeleting = false;
+
+  function typeLoop(){
+    if(!typewriterEl) return;
+    let delay = 70;
+
+    if(!twDeleting){
+      twCharIndex++;
+      typewriterEl.textContent = welcomeText.slice(0, twCharIndex);
+      if(twCharIndex === welcomeText.length){
+        twDeleting = true;
+        delay = 2000;
+      }
+    } else {
+      twCharIndex--;
+      typewriterEl.textContent = welcomeText.slice(0, twCharIndex);
+      delay = 40;
+      if(twCharIndex === 0){
+        twDeleting = false;
+        delay = 600;
+      }
+    }
+    setTimeout(typeLoop, delay);
+  }
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    if(typewriterEl) typewriterEl.textContent = welcomeText;
+  } else {
+    typeLoop();
+  }
+</script>
+
+</body>
+</html>
